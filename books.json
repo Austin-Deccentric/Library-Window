@@ -58,5 +58,23 @@
     "title": "Half of a Yellow Sun",
     "author": "Chimamanda Adichie",
     "status": "on shelf"
+  },
+  {
+    "book_id": 11,
+    "title": "Inferno",
+    "author": "Dan Brown",
+    "status": "on shelf"
+  },
+  {
+    "book_id": 12,
+    "title": "Angels and Demons",
+    "author": "Dan Brown",
+    "status": "on shelf"
+  },
+  {
+    "book_id": 13,
+    "title": "Angels and Demons",
+    "author": "Dan Brown",
+    "status": "on shelf"
   }
 ]
