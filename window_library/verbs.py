@@ -99,7 +99,8 @@ def put_book(books: list[Book], user: User) -> ResponseObject:
         book["author"] = author
     if user["position"] == "Chief Librarian":
         book["status"] = status
-        
+
+    save_books(books)
     
     return {
         "status_code": 200,

@@ -1,6 +1,5 @@
 from window_library.storage import load_users, load_books
 from window_library.utils import prompt_login
-from window_library.mtypes import Book, User
 from window_library.views import library_menu
 
 
