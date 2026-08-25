@@ -10,3 +10,8 @@ class Book(TypedDict):
     title: str
     author: str
     status: str
+
+class ResponseObject(TypedDict):
+    status_code: int
+    message: str
+    data: Book | list[Book] | None
