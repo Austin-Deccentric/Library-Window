@@ -1,5 +1,5 @@
 from window_library.mtypes import Book, ResponseObject, User
-from window_library.storage import add_book, load_books
+from window_library.storage import add_book, load_books, save_books
 
 
 def get_book(books: list[Book]) -> ResponseObject:
@@ -116,23 +116,13 @@ def delete_book(books: list[Book], user: User) -> ResponseObject:
             "message": "Only chief librarians can delete books",
             "data": None,
         }
-    # response = get_book(books)
-    # if response["status_code"] != 200:
-    #     return response
-    # book = response["data"]
-    
-    # book = next((b for b in books if b["book_id"] == book_id), None)
-    # if not book:
-    #     return {
-    #         "status_code": 404,
-    #         "message": "Book not found",
-    #         "data": None,
-    #     }
+
     try:
         book_id = int(input("Enter book ID to delete: "))
         for index, book in enumerate(books):
             if book["book_id"] == book_id:
                 books.pop(index)
+                save_books(books)
         return {
             "status_code": 200,
             "message": "Book deleted successfully",
