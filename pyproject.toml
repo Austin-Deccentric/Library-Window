@@ -1,0 +1,23 @@
+[project]
+name = "window-library"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "0xtin", email = "caugust19.ac@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+window-library = "window_library:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = "."
+
+[tool.hatch.build.targets.wheel]
+packages = ["window_library"]
