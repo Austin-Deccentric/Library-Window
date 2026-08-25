@@ -1,5 +1,5 @@
 from window_library.mtypes import Book, ResponseObject, User
-from window_library.storage import add_book, load_books, save_books
+from window_library.storage import add_book, save_books
 
 
 def get_book(books: list[Book]) -> ResponseObject:
