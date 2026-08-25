@@ -27,3 +27,4 @@ def login_user(users: list[User], username:str, password:str) -> User | None:
 def check_password(user: User, password: str) -> bool:
     """Return True if the user's password matches the supplied password, False otherwise."""
     return user["password"] == password
+

@@ -9,14 +9,13 @@ def register_user() -> None:
     username = input("Enter username: ").strip()
 
     if not username:
-        print("Username cannot be empty.")
-        return
+        raise ValueError("Username cannot be empty.")
 
     if find_member(users, username):
         raise ValueError("That username is already registered.")
 
     password = input("Enter password: ").strip()
-    position = input("Enter position (Member/Chief Librarian): ").strip() 
+    position = input("Enter position (Member/Chief Librarian): ").strip() or "Member"
     if position not in ("Member", "Chief Librarian"):
         raise ValueError("Invalid position. Use 'Member' or 'Chief Librarian'.")
 
@@ -36,9 +35,9 @@ def add_new_book() -> None:
     author = input("Enter author: ").strip()
 
     if not title or not author:
-        raise ValueError("Title and author cannot be empty.")
+        raise ValueError("Title or author cannot be empty.")
 
-    status = input("Enter status (on shelf/borrowed): ").strip().lower()
+    status = input("Enter status (on shelf/borrowed): ").strip().lower() or "on shelf"
     if status not in ("on shelf", "borrowed"):
         raise ValueError("Invalid status. Use 'on shelf' or 'borrowed'.")
 
