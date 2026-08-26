@@ -2,6 +2,10 @@
 
 A command-line library management application built with Python. It lets registered staff log in, view the book catalogue, add books, retrieve individual books, and manage deletions based on staff role.
 
+## Badges
+
+[![wakatime](https://wakatime.com/badge/user/993432c2-fd84-42b2-a48b-d4af2d57f9da/project/d45ada57-c092-4237-b35e-ee66fb15c649.svg)](https://wakatime.com/badge/user/993432c2-fd84-42b2-a48b-d4af2d57f9da/project/d45ada57-c092-4237-b35e-ee66fb15c649)
+
 ## Features
 
 - Secure username-and-password login with a maximum of three attempts
