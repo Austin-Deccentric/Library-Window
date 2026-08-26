@@ -2,7 +2,6 @@ from window_library.mtypes import User
 from datetime import datetime
 
 
-MAX_LOGIN_ATTEMPTS = 3
 
 
 def find_member(users: list[User], username: str) -> User | None:
@@ -27,6 +26,7 @@ def check_password(user: User, password: str) -> bool:
 
 def prompt_login(users: list[User]) -> tuple[bool, User | None]:
     """Prompt for login credentials up to three times."""
+    MAX_LOGIN_ATTEMPTS = 3
    
     for attempt in range(1, MAX_LOGIN_ATTEMPTS + 1):
         print(f"\n--- LOGIN ({attempt}/{MAX_LOGIN_ATTEMPTS}) ---")

@@ -68,13 +68,13 @@
   {
     "book_id": 12,
     "title": "Angels and Demons",
-    "author": "Dan Brown",
+    "author": "Dan Balde",
     "status": "on shelf"
   },
   {
     "book_id": 13,
-    "title": "Angels and Demons",
-    "author": "Dan Brown",
+    "title": "Never give up",
+    "author": "Joyce Mayer",
     "status": "on shelf"
   }
 ]

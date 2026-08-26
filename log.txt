@@ -1,1 +1,26 @@
 [2026-08-25 16:29:35] Book Angels and Demons deleted successfully by mrs_okafor.
+[2026-08-25 20:13:05] Failed to delete book: Only chief librarians can delete books by amina_s
+[2026-08-25 20:15:26] Book: Angels and Demons deleted successfully by mrs_okafor.
+[2026-08-25 20:16:54] Book: Angels and Demons deleted successfully by mrs_okafor.
+[2026-08-25 20:42:46] Failed to get book: There is no such book by mrs_okafor
+[2026-08-25 20:42:56] Book: Purple Hibiscus retrieved successfully by mrs_okafor.
+[2026-08-25 20:49:02] Book: Sozaboy retrieved successfully by mrs_okafor.
+[2026-08-25 20:52:50] Book: Jagua Nana retrieved successfully by mrs_okafor.
+[2026-08-25 20:57:26] Books retrieved successfully by mrs_okafor.
+[2026-08-25 20:57:28] Books retrieved successfully by mrs_okafor.
+[2026-08-25 20:57:30] Books retrieved successfully by mrs_okafor.
+[2026-08-25 20:57:31] Books retrieved successfully by mrs_okafor.
+[2026-08-25 20:57:32] Books retrieved successfully by mrs_okafor.
+[2026-08-25 20:58:39] Books retrieved successfully by mrs_okafor.
+[2026-08-25 20:58:41] Books retrieved successfully by mrs_okafor.
+[2026-08-25 20:59:34] Books retrieved successfully by mrs_okafor.
+[2026-08-25 21:00:37] Books retrieved successfully by mrs_okafor.
+[2026-08-25 21:01:17] Books retrieved successfully by mrs_okafor.
+[2026-08-25 21:01:18] Books retrieved successfully by mrs_okafor.
+[2026-08-25 21:06:20] Books retrieved successfully by mrs_okafor.
+[2026-08-25 22:22:07] Book: Angels and Demons updated successfully by mrs_okafor with response code: 200.
+[2026-08-25 22:23:59] Books retrieved successfully by mrs_okafor with response code: 200 .
+[2026-08-25 22:24:43] Book: Angels and Demons updated successfully by mrs_okafor with response code: 200.
+[2026-08-25 22:24:49] Books retrieved successfully by mrs_okafor with response code: 200 .
+[2026-08-25 22:43:36] Book Never give up added successfully with ID 13 and response code: 201 by amina_s.
+[2026-08-25 22:43:49] Books retrieved successfully by amina_s with response code: 200 .
