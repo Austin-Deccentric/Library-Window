@@ -43,6 +43,7 @@ Bello's Library Window/
     ├── utils.py               # Login and activity logging helpers
     ├── verbs.py               # Book actions: create, retrieve, delete
     └── views.py               # Command-line menu and display logic
+```
 
 ## Using the application
 
