@@ -49,8 +49,35 @@ def prompt_login(users: list[User]) -> tuple[bool, User | None]:
     print("Maximum login attempts reached.")
     return (False, None)
 
+def is_chief(user: User) -> bool:
+    """Return True if user is a Chief Librarian."""
+    return user.get("position") == "Chief Librarian"
+
+
 def log_activity(activity: str, filepath: str | Path = PROJECT_ROOT / "log.txt") -> None:
     """Append a timestamped activity record to the application log file."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(filepath, "a", encoding="utf-8") as file:
         _ = file.write(f"[{timestamp}] {activity}\n")
+
+
+def log_book_action(
+    action: str,
+    username: str,
+    response_code: int,
+    book_title: str | None = None,
+    message: str | None = None,
+) -> None:
+    """Centralized book-action logging to keep views.py DRY."""
+    if book_title:
+        log_activity(
+            f"Book: {book_title} {action} by {username} with response code: {response_code}."
+        )
+    elif message:
+        log_activity(
+            f"Failed to {action}: {message} by {username} with response code: {response_code}"
+        )
+    else:
+        log_activity(
+            f"{action} by {username} with response code: {response_code}"
+        )
