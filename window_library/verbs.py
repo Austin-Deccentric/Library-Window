@@ -1,10 +1,10 @@
-from window_library.mtypes import *
+from window_library.mtypes import Book, ResponseObject, User
 from window_library.storage import add_book, save_books
 
 
-def get_book(books: list[Book]) -> ResponseObject:
+def get_book(books: list[Book], prompt: str = "Enter book ID: ") -> ResponseObject:
     """Return the book matching the supplied book ID, or None if not found."""
-    book_id = input('Enter book Id to update: ')
+    book_id = input(prompt)
     try:
         book_id = int(book_id)
     except ValueError:
@@ -82,7 +82,7 @@ def post_book(books: list[Book]) -> ResponseObject:
     
 def put_book(books: list[Book], user: User) -> ResponseObject:
     """Update an existing book's details."""
-    response = get_book(books)
+    response = get_book(books, "Enter book ID to update: ")
     if response["status_code"] != 200 or response["data"] is None:
         return response
         
@@ -122,25 +122,27 @@ def delete_book(books: list[Book], user: User) -> ResponseObject:
             "data": None,
         }
 
+    raw = input("Enter book ID to delete: ").strip()
     try:
-        book_id = int(input("Enter book ID to delete: "))
-        for index, book in enumerate(books):
-            if book["book_id"] == book_id:
-                _ = books.pop(index)
-                save_books(books)
-                return {
-                    "status_code": 200,
-                    "message": "Book deleted successfully",
-                    "data": book,
-                }
-        return {
-            "status_code": 404,
-            "message": "Book not found",
-            "data": None,
-        }
+        book_id = int(raw)
     except ValueError:
         return {
-            "status_code": 404,
-            "message": "Deletion failed",
+            "status_code": 400,
+            "message": "Invalid book ID",
             "data": None,
         }
+
+    for index, book in enumerate(books):
+        if book["book_id"] == book_id:
+            _ = books.pop(index)
+            save_books(books)
+            return {
+                "status_code": 200,
+                "message": "Book deleted successfully",
+                "data": book,
+            }
+    return {
+        "status_code": 404,
+        "message": "Book not found",
+        "data": None,
+    }

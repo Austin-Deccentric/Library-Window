@@ -1,5 +1,8 @@
 from datetime import datetime
+from pathlib import Path
+
 from window_library.mtypes import User
+from window_library.storage import PROJECT_ROOT
 
 
 
@@ -46,7 +49,7 @@ def prompt_login(users: list[User]) -> tuple[bool, User | None]:
     print("Maximum login attempts reached.")
     return (False, None)
 
-def log_activity(activity: str, filepath: str = "log.txt") -> None:
+def log_activity(activity: str, filepath: str | Path = PROJECT_ROOT / "log.txt") -> None:
     """Append a timestamped activity record to the application log file."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(filepath, "a", encoding="utf-8") as file:

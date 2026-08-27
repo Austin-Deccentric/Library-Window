@@ -1,7 +1,7 @@
 from window_library.mtypes import Book, User
 from window_library.storage import load_users
 from window_library.utils import log_activity
-from window_library.verbs import *
+from window_library.verbs import delete_book, get_book, get_books, post_book, put_book
 
 
 def view_staff() -> None:
@@ -32,7 +32,7 @@ def library_menu(books: list[Book], user: User | None) -> bool:
             print("6. Log out")
             print("7. Exit")
     
-            choice = input("Choose an option: ").strip()
+            choice = input("Choose an option: ").strip().lower()
     
             try:
                 if choice == "1":
@@ -116,9 +116,12 @@ def library_menu(books: list[Book], user: User | None) -> bool:
                     print("Goodbye!")
                     return False
                 else:
-                    print("Invalid choice. Please select 1, 2, 3,4, 5 or 6.")
+                    print("Invalid choice. Please select 1-7 or type 'exit'.")
             except ValueError as error:
                 print(error)
+                log_activity(
+                    f"Failed to process request: {error} by {user['username']} with response code: 400"
+                )
     else:
         return True
 
