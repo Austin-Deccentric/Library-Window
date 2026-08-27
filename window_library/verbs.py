@@ -1,4 +1,4 @@
-from window_library.mtypes import Book, ResponseObject, User
+from window_library.mtypes import *
 from window_library.storage import add_book, save_books
 
 
@@ -83,30 +83,34 @@ def post_book(books: list[Book]) -> ResponseObject:
 def put_book(books: list[Book], user: User) -> ResponseObject:
     """Update an existing book's details."""
     response = get_book(books)
-    if response["status_code"] != 200:
+    if response["status_code"] != 200 or response["data"] is None:
         return response
         
     book = response["data"]
-    title = input("Enter new title: ").strip()
-    author = input("Enter new author: ").strip()
-    if user["position"] == "Chief Librarian":
-        status = input("Enter new status (on shelf/borrowed): ").strip().lower() or book["status"]
-        if status not in ("on shelf", "borrowed"):
-            raise ValueError("Invalid status. Use 'on shelf' or 'borrowed'.")
-    if title:
-        book["title"] = title
-    if author:
-        book["author"] = author
-    if user["position"] == "Chief Librarian":
-        book["status"] = status
-
-    save_books(books)
+    if isinstance(book, dict):
+        
+        title = input("Enter new title: ").strip()
+        author = input("Enter new author: ").strip()
+        status = book["status"] # for the linter
+        if user["position"] == "Chief Librarian":
+            status = input("Enter new status (on shelf/borrowed): ").strip().lower() or book["status"]
+            if status not in ("on shelf", "borrowed"):
+                raise ValueError("Invalid status. Use 'on shelf' or 'borrowed'.")
+        if title:
+            book["title"] = title
+        if author:
+            book["author"] = author
+        if user["position"] == "Chief Librarian":
+            book["status"] = status
     
-    return {
-        "status_code": 200,
-        "message": "Book updated successfully",
-        "data": book,
-    }
+        save_books(books)
+        
+        return {
+            "status_code": 200,
+            "message": "Book updated successfully",
+            "data": book,
+        }
+    return response
 
 
 def delete_book(books: list[Book], user: User) -> ResponseObject:
@@ -122,12 +126,17 @@ def delete_book(books: list[Book], user: User) -> ResponseObject:
         book_id = int(input("Enter book ID to delete: "))
         for index, book in enumerate(books):
             if book["book_id"] == book_id:
-                books.pop(index)
+                _ = books.pop(index)
                 save_books(books)
+                return {
+                    "status_code": 200,
+                    "message": "Book deleted successfully",
+                    "data": book,
+                }
         return {
-            "status_code": 200,
-            "message": "Book deleted successfully",
-            "data": book,
+            "status_code": 404,
+            "message": "Book not found",
+            "data": None,
         }
     except ValueError:
         return {
